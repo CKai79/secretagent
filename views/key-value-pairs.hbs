@@ -1,0 +1,104 @@
+<div class="container">
+  {{#if promise}}
+    <div>
+      <p>{{promise.msg}}</p>
+    </div>
+  {{/if}}
+
+  <div class="add-container-container flex">
+    <button id="add-row" class="add-button flex pointer" onClick="addInsertRow()">
+      <span>Add</span>
+      <img class="plus-icon" src="./plus-lg.svg" alr="x-circle icon" loading="lazy"/>
+    </button>
+  </div>
+
+  <table class='table'>
+    <thead class="">
+      <tr>
+        <th></th>
+        <th>Key</th>
+        <th>Value</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody id="tbody">
+    {{#if dataExists}}
+      {{#each data}}
+        <tr class="key-value-row" id="row-{{this.id}}">
+          <td id="check-container-{{this.id}}">
+            <div class="flex-center">
+              <img src="./checkmark.svg" alt="checkmark" loading="lazy"/>
+            </div>
+          </td>
+          <td><textarea id="key-id-{{this.id}}" rows="1" placeholder="Key..." disabled>{{this.key}}</textarea></td>
+          <td class="value-td">
+            <textarea id="value-{{this.id}}" rows="1" placeholder="Value..." disabled>{{this.value}}</textarea>
+          </td>
+          <td class="p-relative">
+            <div id="delete-{{this.id}}" class="flex-center pointer icon-container" onClick="openDeletePopup('{{this.id}}')">
+              <img class="x-icon" src="./x-icon.svg" alr="x icon" loading="lazy"/>
+            </div>
+            <div data-value="{{this.key}}" class="popup" id="delete-popup-{{this.id}}">
+              <span class="popuptext" id="myPopup">
+                Confirm <br />
+                <button class="delete-button" onclick="deleteRow('{{this.id}}')">
+                  Delete
+                </button>
+              </span>  
+            </div>
+          </td>
+        </tr>
+      {{/each}}
+    {{/if}}
+    </tbody>
+  </table>
+  <div id="item-container">
+  {{#if dataExists}}
+    <div style="text-align: right; background-color: #EFEFEF; padding: 3px 17px; border: 1px solid #DDDDDD">
+      <p style="margin: 0">Items stored: <span id="items-counter">{{itemsLength}}</span></p>
+    </div>
+  {{/if}}
+  </div>
+  <div class="refresh-save-container-container flex">
+    <div id="info-text-container" class="flex">
+      <img src="./subtract.svg" alt="subtract icon" loading="lazy"/>
+      <span id="info-text">Use this table to store Uniqe Keys and Values for your project.
+        Check out this <a href="" target="_blank">example</a> to get you started</span>
+    </div>
+    <div id="refresh-save-container" class="flex">
+      <button class="refresh-container flex pointer" onClick="reload()">
+        <img class="refresh-icon" src="./arrow-counterclockwise.svg" alt="refresh-icon" loading="lazy"/>
+      </button>
+      <button id="save-button" class="save-button flex pointer" onClick="addRow()" disabled>
+        <span id="save-text">Save</span>
+        <img style="width: 25px;" class="disabled-img" src="./upload.svg" alt="upload-icon" loading="lazy"/>
+      </button>
+    </div>
+  </div>
+
+  <div id="errors" class="errors"></div>
+
+  <table class="table">
+    <caption>This is an example. The database will be updated every page hit</caption>
+    <thead>
+      <tr>
+        <th>Url</th>
+        <th>Hits</th>
+      </tr>
+    </thead>
+    <tbody id="tbody">
+      {{#each counter}}
+      <tr class="key-value-row">
+        <td>
+          {{this.route}}
+        </td>
+        <td class="value-td">
+          {{this.count}}
+        </td>
+      </tr>
+      {{/each}}
+    </tbody>
+  </table>
+</div>
+
+<script src="./script.js"></script>

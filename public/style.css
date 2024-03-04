@@ -1,0 +1,281 @@
+:root {
+  --save-add-margin: .7rem;
+  --weak-border: 1px solid #DDD;
+  --strong-border: 1px solid #000;
+}
+
+body {
+  margin: 0;
+  box-sizing: border-box;
+  font-family: Source Sans Pro, sans-serif;
+}
+
+textarea {
+  padding: .2rem .1rem;
+  resize: none;
+  font-size: 16px;
+  border: none;
+  width: 99%; /* To avoid the textarea overflow the table cell */
+  overflow-wrap: break-word;
+  vertical-align: middle;
+  background: white;
+}
+
+textarea:focus,
+textarea:active {
+  outline: none;
+}
+
+textarea::placeholder {
+  font-style: italic;
+}
+
+textarea:disabled {
+  color: #000 !important;
+}
+
+.container {
+  border-radius: 5px;
+  padding: 20px;
+  margin: 10px;
+  margin: 0 auto;
+  width: 600px;
+}
+
+.add-container-container {
+  justify-content: right;
+  align-items: center;
+  margin-bottom: var(--save-add-margin);
+}
+
+.add-button {
+  border: var(--weak-border);
+  border-radius: 40px;
+  width: 106px;
+  height: 44px;
+  background: #fff;
+}
+
+.add-button:disabled {
+  border: 1px solid #DDD !important;
+  color: #DDD !important;
+  cursor: not-allowed;
+}
+
+.icon-button,
+.add-button {
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.refresh-save-container-container {
+  justify-content: space-between;
+  align-items: center;
+  margin-top: var(--save-add-margin);
+}
+
+.save-button {
+  align-items: center;
+  justify-content: center;
+  border: var(--strong-border);
+  border-radius: 20px;
+  width: 130px;
+  height: 44px;
+  background: #fff;
+  color: #000;
+}
+
+.save-button:disabled {
+  border: 1px solid #DDD !important;
+  color: #DDD !important;
+  cursor: not-allowed;
+}
+
+.refresh-container {
+  justify-content: center;
+  align-items: center;
+  border: var(--weak-border);
+  border-radius: 50%;
+  height: fit-content;
+  margin-right: .5rem;
+  height: 44px;
+  width: 44px;
+  background: white;
+}
+
+#info-text-container {
+  display: flex;
+  gap: 10px;
+  margin-right:4rem;
+}
+
+#info-text {
+  font-size: 12px;
+}
+
+#save-text {
+  margin-right: .7rem;
+}
+
+.refresh-icon {
+  padding: .72rem;
+}
+
+/* Table */
+
+.table-top-row {
+  border: none;
+  text-align: right;
+}
+#table-footer {
+  text-align: right;
+  background: #EFEFEF;
+}
+.table-addrow-x {
+  text-align: center;
+}
+#add-label-to-plus {
+  text-align: right;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+th {
+  background: #EFEFEF;
+  text-align: left;
+}
+td, 
+th {
+  border: var(--weak-border);
+  padding: 7px;
+  width: 40%;
+}
+td:nth-child(4),
+th:nth-child(4),
+td:nth-child(1),
+th:nth-child(1) {
+  width: 10%;
+}
+
+@keyframes spin {
+  100% {
+      transform: rotate(360deg);
+  }
+}
+
+@media screen and (max-width: 800px) {
+  textarea {
+    min-width: 150px;
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .container,
+  .modal-content {
+    width: 80%;
+  }
+  textarea {
+    min-width: 100px;
+  }
+}
+
+/*Popup*/
+
+.popup {
+  position: absolute;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  display: none;
+  top: -17px;
+  left: 75px;
+  width: 80px;
+  text-align: center;
+}
+
+.popup .popuptext {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;  
+  width: 78px;
+  height: 71px;  
+  background: #FFFFFF;
+  box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 20px;
+}
+
+.delete-button {
+  padding: 5px 10px;
+  cursor: pointer;
+  width: 58px;
+  height: 28px;
+  background: white;
+  border-radius: 40px;
+  border: 1px solid #FF0000;
+  color: #FF0000;
+}
+
+.popup::after {
+  content: " ";
+  position: absolute;
+  left: -10px;
+  top: 30px;
+  border-top: 7px solid transparent;
+  border-right: 10px solid black;
+  border-left: none;
+  border-bottom: 7px solid transparent;
+}
+
+.checkmark-td img {
+  margin: auto;
+}
+
+/*Error container*/
+
+.errors {
+  margin-top: 1rem;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 18px;
+  text-align: center;
+  color: red;
+  height: 25px;
+}
+
+/*Utilities*/
+
+.flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.p-relative {
+  position: relative;
+}
+
+.flex {
+  display: flex;
+}
+
+.show {
+  display: block !important;
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+.disabled {
+  border: 1px solid #DDD !important;
+  color: #DDD !important;
+  cursor: not-allowed;
+}
+
+.disabled-img {
+  opacity: 0.3;
+}
